@@ -3387,7 +3387,7 @@ img.u-pull-left {
  * -------------------------------------------------------------------- */
 .s-intro__bg {
     display             : block;
-    background-image    : url(../images/hero-bg.jpg);
+    background-image    : url(../images/hero-bg.png);
     background-repeat   : no-repeat;
     background-position : center;
     background-size     : cover;
@@ -3446,7 +3446,7 @@ img.u-pull-left {
 
 .s-intro__content-bg {
     display             : block;
-    background-image    : url(../images/intro-bg.jpg);
+    background-image    : url(../images/intro-bg.png);
     background-repeat   : no-repeat;
     background-position : center;
     background-size     : cover;
@@ -4659,5 +4659,44 @@ img.u-pull-left {
     .ss-go-top a {
         height : var(--vspace-1_5);
         width  : var(--vspace-1_5);
+    }
+}
+
+
+
+
+
+
+
+
+/* ADDON - AQILA */
+        /* CSS untuk dropdown */
+/* Sembunyikan dropdown secara default */
+/* Sembunyikan dropdown secara default di layar besar */
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    background-color: transparent; /* Tidak ada kotak, transparan */
+    z-index: 1;
+}
+
+.dropdown-menu a {
+    color: grey; /* Warna font default */
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+/* Ubah warna font menjadi putih saat dihover */
+.dropdown-menu a:hover {
+    color: white;
+    background-color: transparent; /* Tidak ada perubahan warna latar belakang */
+}
+
+/* Mobile styling */
+@media (max-width: 768px) {
+    .dropdown-menu {
+        display: block; /* Tampilkan dropdown pada perangkat mobile */
+        position: relative; /* Posisi relatif untuk perangkat mobile */
     }
 }

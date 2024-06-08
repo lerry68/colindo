@@ -141,72 +141,28 @@
         /* Tetap menampilkan garis bawah saat tombol aktif */
         
     }
-    
+        
 
-   /* Media queries untuk responsivitas */
-   @media (max-width: 768px) {
-   .language-selector {
-   position: absolute;
-   padding: 10px;
-    margin-left: 60px;
-   margin-bottom: 5px;
-   align-items: normal;
-   }
+        /* Media queries untuk responsivitas */
+        @media (max-width: 768px) {
+        .language-selector {
+        position: absolute;
+        padding: 10px;
+            margin-left: 60px;
+        margin-bottom: 5px;
+        align-items: normal;
+        }
 
-   .language-button,
-   .scroll-button {
-   width: auto;
-   margin: 5px 0;
+        .language-button,
+        .scroll-button {
+        width: auto;
+        margin: 5px 0;
 
-   }
-   }
-</style>
-
-
-    <style>
-
+        }
+        }
     </style>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            var aboutLink = document.getElementById("aboutLink");
-            var aboutDropdown = document.getElementById("aboutDropdown");
-
-            function toggleDropdown(event) {
-                event.preventDefault(); // Mencegah default action dari link
-                if (window.innerWidth > 768) { // Hanya tangani klik untuk layar besar
-                    aboutDropdown.style.display = aboutDropdown.style.display === "block" ? "none" : "block";
-                }
-            }
-
-            aboutLink.addEventListener("click", toggleDropdown);
-
-            // Menutup dropdown ketika klik di luar elemen dropdown
-            window.addEventListener("click", function (event) {
-                if (window.innerWidth > 768) { // Hanya tangani klik untuk layar besar
-                    if (!aboutLink.contains(event.target) && !aboutDropdown.contains(event.target)) {
-                        aboutDropdown.style.display = "none";
-                    }
-                }
-            });
-
-            // Menangani perubahan ukuran layar
-            window.addEventListener("resize", function () {
-                if (window.innerWidth > 768) {
-                    aboutDropdown.style.display = "none"; // Sembunyikan dropdown pada layar besar
-                } else {
-                    aboutDropdown.style.display = "block"; // Tampilkan dropdown pada layar kecil
-                }
-            });
-
-            // Set initial state for dropdown based on screen size
-            if (window.innerWidth <= 768) {
-                aboutDropdown.style.display = "block"; // Tampilkan dropdown pada perangkat mobile
-            } else {
-                aboutDropdown.style.display = "none"; // Sembunyikan dropdown pada layar besar
-            }
-        });
-    </script>
+    
 
 
 
@@ -234,10 +190,10 @@
                 <nav class="s-header__nav">
 
                     <ul class="s-header__menu-links">
-                        <li class="current"><a href="#intro" class="smoothscroll">Home</a></li>
+                        <li id="home" class="current"><a href="#intro" class="smoothscroll">Home</a></li>
                         <li class="dropdown">
                             <a href="#" class="smoothscroll dropdown-toggle" data-toggle="dropdown"
-                                id="aboutLink">About</a>
+                                id="about">About</a>
                             <div class="dropdown-menu" id="aboutDropdown">
                                 <a href="#about1" class="smoothscroll">• ㅤCompany Info</a>
                                 <a href="#about2" class="smoothscroll">• ㅤVision & Mission</a>
@@ -246,11 +202,9 @@
                                 <!-- Tambahkan lebih banyak item dropdown di sini jika diperlukan -->
                             </div>
                         </li>
-
-
                         <!-- <li><a href="#services" class="smoothscroll">Services</a></li> -->
-                        <li><a href="#folio" class="smoothscroll">Projects</a></li>
-                        <li><a href="#footer" class="smoothscroll">Contact</a></li>
+                        <li id="work"><a href="#folio" class="smoothscroll">Projects</a></li>
+                        <li id="kontak"><a href="#footer" class="smoothscroll">Contact</a></li>
                     </ul> <!-- s-header__menu-links -->
                     <ul class="s-header__social">
                             <li><button class="language-button" onclick="setLanguage('en')"
@@ -1068,6 +1022,89 @@
     ================================================== -->
     <script src="js/plugins.js"></script>
     <script src="js/main.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var aboutLink = document.getElementById("about");
+            var aboutDropdown = document.getElementById("aboutDropdown");
+
+            function toggleDropdown(event) {
+                event.preventDefault(); // Mencegah default action dari link
+                if (window.innerWidth > 768) { // Hanya tangani klik untuk layar besar
+                    aboutDropdown.style.display = aboutDropdown.style.display === "block" ? "none" : "block";
+                }
+            }
+
+            aboutLink.addEventListener("click", toggleDropdown);
+
+            // Menutup dropdown ketika klik di luar elemen dropdown
+            window.addEventListener("click", function (event) {
+                if (window.innerWidth > 768) { // Hanya tangani klik untuk layar besar
+                    if (!aboutLink.contains(event.target) && !aboutDropdown.contains(event.target)) {
+                        aboutDropdown.style.display = "none";
+                    }
+                }
+            });
+
+            // Menangani perubahan ukuran layar
+            window.addEventListener("resize", function () {
+                if (window.innerWidth > 768) {
+                    aboutDropdown.style.display = "none"; // Sembunyikan dropdown pada layar besar
+                } else {
+                    aboutDropdown.style.display = "block"; // Tampilkan dropdown pada layar kecil
+                }
+            });
+
+            // Set initial state for dropdown based on screen size
+            if (window.innerWidth <= 768) {
+                aboutDropdown.style.display = "block"; // Tampilkan dropdown pada perangkat mobile
+            } else {
+                aboutDropdown.style.display = "none"; // Sembunyikan dropdown pada layar besar
+            }
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            setLanguage('id');
+        });
+
+        function setLanguage(language) {
+            var englishButton = document.getElementById('englishButton');
+            var indonesianButton = document.getElementById('indonesianButton');
+            var homeNavItem = document.getElementById('home').querySelector('a');
+            var aboutNavItem = document.getElementById('about').querySelector('a');
+            // var servicesNavItem = document.getElementById('servis').querySelector('a');
+            var folioNavItem = document.getElementById('work').querySelector('a');
+            var contactNavItem = document.getElementById('kontak').querySelector('a');
+
+            if (language === 'en') {
+                document.getElementById('intro-title').innerHTML =
+                    'We provide creative <br> solutions to turn your <br> ideas into digital reality.';
+                document.getElementById('scroll-down-button').innerText = 'Scroll Down';
+                englishButton.classList.add('active');
+                indonesianButton.classList.remove('active');
+            } else if (language === 'id') {
+                document.getElementById('intro-title').innerHTML =
+                    'Kami menyediakan solusi <br> kreatif untuk mengubah ide <br> Anda menjadi realitas digital.';
+                document.getElementById('scroll-down-button').innerText = 'Gulir ke Bawah';
+                indonesianButton.classList.add('active');
+                englishButton.classList.remove('active');
+            }
+
+            if (language === 'en') {
+                homeNavItem.innerText = 'Home';
+                aboutNavItem.innerText = 'About';
+                //  servicesNavItem.innerText = 'Services';
+                folioNavItem.innerText = 'Projects';
+                contactNavItem.innerText = 'Contact';
+            } else if (language === 'id') {
+                homeNavItem.innerText = 'Beranda';
+                aboutNavItem.innerText = 'Tentang';
+                //  servicesNavItem.innerText = 'Layanan';
+                folioNavItem.innerText = 'Proyek';
+                contactNavItem.innerText = 'Kontak';
+            }
+        }
+    </script>
 
 </body>
 

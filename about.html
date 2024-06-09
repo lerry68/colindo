@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+
+<head>
+
+    <!--- basic page needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>PT Kolindo Bina Nusantara | Information Detail</title>
+
+    <script>
+        document.documentElement.classList.remove('no-js');
+        document.documentElement.classList.add('js');
+    </script>
+
+    <!-- CSS
+    ================================================== -->
+    <link rel="stylesheet" href="css/vendor.css">
+    <link rel="stylesheet" href="css/styles.css">
+
+    <!-- favicons
+    ================================================== -->
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="site.webmanifest">
+
+    <style>
+        .s-header {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background-color: black; /* Warna latar belakang header */
+        z-index: 1000; /* Pastikan header berada di atas elemen lain */
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Tambahkan bayangan untuk efek mengapung */
+        }
+        .s-header__inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 20px; /* Sesuaikan padding sesuai kebutuhan */
+        }
+        .language-selector {
+            display: flex;
+        }
+
+        .language-button {
+            background-color: transparent;
+            border: 0;
+            color: white;
+            padding: 10px 20px;
+            margin-right: 10px;
+            cursor: pointer;
+            position: relative;
+            transition: color 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .language-button:hover {
+            background-color: transparent;
+            color: white;
+        }
+
+        .language-button:after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 0.5px;
+            display: block;
+            margin-top: 12px;
+            left: 0;
+            background: white;
+            transform: scaleX(0);
+            transform-origin: center;
+            transition: transform 0.3s ease;
+        }
+
+        .language-button:hover:after {
+            transform: scaleX(1);
+        }
+
+        .language-button.active {
+            color: white;
+            transform: scaleX(1);
+            background: transparent;
+        }
+
+        .language-button.active:after {
+            width: 100%;
+            color: white;
+            left: 0;
+            background: white;
+        }
+
+        .scroll-button {
+            background-color: transparent;
+            color: white;
+            padding: 10px 20px;
+            cursor: pointer;
+            position: relative;
+            transition: color 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .scroll-button:after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 0.5px;
+            display: block;
+            margin-top: 12px;
+            left: 0;
+            background: white;
+            transform: scaleX(0);
+            transform-origin: center;
+            transition: transform 0.3s ease;
+        }
+
+        .scroll-button:hover:after {
+            transform: scaleX(1);
+        }
+
+        .scroll-button.active {
+            transform: scaleX(1);
+            background: white;
+        }
+
+        .scroll-button.active:after {
+            transform: scaleX(1);
+            width: 100%;
+            left: 0;
+            background: white;
+
+        }
+
+        .hero-image {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .breadcrumbs {
+            font-size: 14px;
+            color: #333;
+            margin-left: 100px;
+            margin-bottom: -40px;
+            margin-top: -100px;
+        }
+
+        .breadcrumbs a {
+            text-decoration: none;
+            color: orange;
+        }
+
+        .breadcrumbs a:hover {
+            text-decoration: underline;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+          .management-image {
+          display: flex;
+          justify-content: center;
+          margin-top: 20px;
+          }
+
+          .management-image img {
+          max-width: 100%;
+          height: auto;
+          }
+
+    .btn {
+    display: inline-block;
+    padding: 6px 12px;
+    font-size: 12px;
+    font-weight: bold;
+    color: black;
+    background-color: transparent;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: color 0.3s ease, border-bottom 0.3s ease;
+    text-decoration: none;
+    }
+
+    .btn:hover,
+    .btn:active,
+    .btn:focus {
+    color: orange;
+    border-bottom: 2px solid orange;
+    background-color: transparent;
+    }
+    .btn.active {
+    color: orange;
+    border-bottom: 2px solid orange;
+    background-color: transparent;
+    }
+
+    .textabt{
+        margin-left: 100px;
+    }
+    .with-vertical-line {
+    position: relative;
+    padding-left: 20px; /* Memberikan ruang untuk garis vertikal */
+    display: flex;
+    align-items: center;
+    }
+    .with-vertical-line-white {
+    position: relative;
+    padding-left: 20px; /* Memberikan ruang untuk garis vertikal */
+    display: flex;
+    align-items: center;
+    color: white;
+    }
+
+    .with-vertical-line::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 2px; /* Lebar garis vertikal */
+    height: 100%; /* Tinggi garis vertikal */
+    background-color: black; /* Warna garis vertikal */
+    }
+     .with-vertical-line-white::before {
+     content: '';
+     position: absolute;
+     left: 0;
+     top: 50%;
+     transform: translateY(-50%);
+     width: 2px; /* Lebar garis vertikal */
+     height: 100%; /* Tinggi garis vertikal */
+     background-color: white; /* Warna garis vertikal */
+     }
+
+    .profile-wrapper{
+     display: flex;
+     flex-wrap: wrap;
+     justify-content: space-between;
+     margin: 0 auto;
+     max-width: 1200px;
+     padding: 20px;
+    }
+    .profile-wrapper-director {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    margin: 0 auto;
+    padding: 20px;
+    max-width: 100%;
+    overflow-x: auto; /* Untuk mengaktifkan pengguliran horizontal jika diperlukan */
+    }
+
+    .profile-card {
+    flex-basis: calc(25% - 20px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+    margin: 20px auto;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    width: 300px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    }
+
+    .profile-card:hover {
+    transform: scale(1.05);
+    background-color: #ee9f27;
+    color: white;
+    }
+    .profile-card:hover h3{
+    color: white;
+    }
+    .profile-card:hover p{
+        color: whitesmoke;
+    }
+
+    .profile-card img {
+    width: 600px;
+    height: 300px;
+    border-radius: 4px;
+    object-fit: fill;
+    margin-bottom: 10px;
+    }
+
+    .profile-card h3 {
+    margin: 8px 0;
+    font-size: 1.2em;
+    font-weight: normal;
+    }
+
+    .profile-card p {
+    margin: 4px 0;
+    font-size: 0.9em;
+    text-align: center;
+    color: #555;
+    }
+
+    .profile-card-dir {
+     flex: 0 0 calc(19% - 10px); /* Mengatur setiap kartu untuk mengambil 19% dari lebar kontainer, minus margin */
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     padding: 15px;
+     margin: 0 10px; /* Margin kiri dan kanan untuk menambahkan sedikit ruang antar kartu */
+     border: 1px solid #ccc;
+     border-radius: 8px;
+     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+     background-color: #fff;
+     transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .profile-card-dir:hover {
+    transform: scale(1.05);
+    background-color: #ee9f27;
+    color: white;
+    }
+    .profile-card-dir:hover h3{
+    color: white;
+    }
+    .profile-card-dir:hover p{
+    color: whitesmoke;
+    }
+
+    .profile-card-dir img {
+    width: 450px;
+    height: 225px;
+    border-radius: 4px;
+    object-fit: fill;
+    margin-bottom: 10px;
+    }
+
+    .profile-card-dir h3 {
+    margin: 8px 0;
+    font-size: 1.2em;
+    font-weight: normal;
+    }
+
+    .profile-card-dir p {
+    margin: 4px 0;
+    font-size: 0.9em;
+    text-align: center;
+    color: #555;
+    }
+
+        @media (max-width: 768px) {
+            .textabt{
+                margin-left: 25px;
+            }
+            .language-selector {
+                position: absolute;
+                padding: 10px;
+                margin-left: 60px;
+                margin-bottom: 5px;
+                align-items: normal;
+            }
+
+            .hero-image img {
+                width: 100vw;
+                height: auto;
+                transform: scale(2);
+                margin-right: 100%;
+            }
+
+            .breadcrumbs {
+                margin-top: 0.1px;
+                margin-left: 20px;
+            }
+
+            .container {
+                flex-direction: row;
+                align-items: center;
+                gap: 5px;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                scroll-left: 0;
+            }
+
+            .btn {
+                font-size: 7px;
+                padding: 4px 2px;
+            }
+            .btn.active {
+            color: orange;
+            border-bottom: 2px solid orange;
+            background-color: transparent;
+            }
+            .management-image img{
+                width: 100vw;
+                height: auto;
+                transform: scale(2);
+                margin-top: 70px;
+                margin-bottom: 200px;
+            }
+             .profile-card img {
+             width: 100vw;
+             height: auto;
+             border-radius: 4px;
+             object-fit: fill;
+             margin-bottom: 10px;
+             }
+             .profile-card-dir img {
+             width: 150vw;
+             height: 27vw;
+             border-radius: 4px;
+             object-fit: fill;
+             margin-bottom: 10px;
+             }
+        }
+    </style>
+
+</head>
+
+
+<body id="top">
+    <div id="preloader">
+        <div id="loader"></div>
+    </div>
+    <div id="page" class="s-pagewrap">
+
+        <!-- HEADER  -->
+        <header class="s-header" style="background-color: black; margin-top: -16px;">
+            <div class="row s-header__inner">
+                <div class="s-header__block">
+                    <div class="s-header__logo">
+                        <a class="logo" href="index.html">
+                            <img style="width: 57px;" src="images/logo.png" alt="Homepage">
+                        </a>
+                    </div>
+                    <a class="s-header__menu-toggle" href="#0"><span>Menu</span></a>
+                </div>
+                <nav class="s-header__nav">
+
+                    <ul class="s-header__menu-links">
+                        <li id="home"><a href="index.html#intro">Home</a></li>
+                        <li id="aboutnav" class="current"><a href="index.html#about" >About</a></li>
+                        <!-- <li><a href="#services" class="smoothscroll">Services</a></li> -->
+                        <li id="work"><a href="index.html#folio">Projects</a></li>
+                        <li id="testimonials"><a href="index.html#testimonials">Partners</a></li>
+                        <li id="kontak"><a href="index.html#footer">Contact</a></li>
+                    </ul>
+                    <ul class="s-header__social">
+                        <li><button class="language-button" onclick="setLanguage('en')" id="englishButton">EN</button>
+                        </li>
+                        <li><button class="language-button" onclick="setLanguage('id')"
+                                id="indonesianButton">ID</button></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <!-- END HEADER -->
+
+        <div class="hero-image">
+            <img src="images/about.jpg" alt="Hero Image">
+        </div>
+        <div class="section-header">
+            <div class="breadcrumbs">
+                <a href="index.html">Home</a> / <a href="index.html#about">About Us</a> / Profile Company
+            </div>
+            <h1 class="textabt with-vertical-line">About Us</h1>
+            <div class="container">
+                <button class="btn active" id="profileBtn" class="active">Profile</button> /
+                <button class="btn" id="visionMissionBtn">Visi dan Misi</button> /
+                <button class="btn" id="managementBtn">Dewan Manajemen</button> /
+                <button class="btn" id="partnersBtn">Mitra</button>
+            </div>
+        </div>
+
+        <section id="profile" class="s-services target-section" style="margin-bottom: -250px;">
+            <div style="margin-top: -10px;" class="row section-header" data-num="01">
+                <h3 class="column lg-12 section-header__pretitle text-pretitle" id="profile">Profile Perusahaan</h3>
+                <div class="column lg-6 stack-on-1100 section-header__primary">
+                    <h2 class="title text-display-1 with-vertical-line">
+                        PT Kolindo Bina Nusantara
+                    </h2>
+                </div>
+                <div class="column lg-6 stack-on-1100 section-header__secondary">
+                    <p class="desc" id="profile1">
+                        PT Kolindo Bina Nusantara adalah perusahaan batu bara Indonesia yang berdedikasi untuk menyediakan
+                        sumber energi yang andal dan berkelanjutan bagi masyarakat. Dengan komitmen terhadap praktik
+                        penambangan yang bertanggung jawab dan ramah lingkungan, kami berusaha untuk mendukung
+                        pembangunan nasional dan kesejahteraan masyarakat.
+                </div>
+                <div class="row section-header">
+                    <div class="column section-header__primary">
+                        <h2 class="title text-display-1 with-vertical-line" id="profile2">
+                            Company Profile
+                        </h2>
+                        <div class="list-block__item">
+                            <h3 class="h5" id="profile3">Company Name : </h3>
+                            <div class="list-block__text">
+                                <p>PT Kolindo Bina Nusantara</p>
+                            </div>
+                        </div>
+                        <div class="list-block__item">
+                            <h3 class="h5" id="profile4">President Director : </h3>
+                            <div class="list-block__text">
+                                <p>Agus Sugianto</p>
+                            </div>
+                        </div>
+                        <div class="list-block__item">
+                            <h3 class="h5" id="profile5">Office Address : </h3>
+                            <div class="list-block__text">
+                                <p>
+                                    Level 38 Tower A Kota Kasablanka, Jl. Casablanca Raya Kav.88 Jakarta, 12870 <br>
+                                    ⠀
+                                </p>
+                            </div>
+                        </div>
+                         <div class="list-block__item">
+                             <h3 class="h5" id="profile6">Operational Office : </h3>
+                             <div class="list-block__text">
+                                 <p>
+                                     Jl.Tebet Barat IX No.21A Jakarta 12810 <br>
+                                 </p>
+                             </div>
+                         </div>
+                         <div class="list-block__item">
+                             <h3 class="h5" id="profile7">Telephone / Fax : </h3>
+                             <div class="list-block__text">
+                                 <p>
+                                     021 29638099 - 22983743 / 29638088 <br>
+                                 </p>
+                             </div>
+                         </div>
+                         <div class="list-block__item">
+                             <h3 class="h5" id="profile8">Email Address : </h3>
+                             <div class="list-block__text">
+                                 <p>
+                                     pt.kolindo@gmail.com <br>
+                                 </p>
+                             </div>
+                         </div>
+                    </div>
+                    <div class="column section-header__primary">
+                        <h2 class="title text-display-1 with-vertical-line" id="profile9">
+                            Business Licenses
+                        </h2>
+                        <div class="list-block__item">
+                            <h3 class="h5" id="profile10">Company Incorporation : </h3>
+                            <div class="list-block__text">
+                                <p>
+                                    Notary Titiek Irawati S.SH, JKT. at JKT, dated May 26th 2006 <br>
+                                    AHU : C-19258 HT. 01.01.TH.2006, July 3 2006 <br>
+                                    ⠀
+                                </p>
+                            </div>
+                        </div>
+                        <div class="list-block__item">
+                            <h3 class="h5" id="profile11">Deed of Amendment : </h3>
+                            <div class="list-block__text">
+                                <p>
+                                    Notary Boby Sofyan SH, MKN. at TNG, dated June 05th 2024 <br>
+                                    AHU : AH. 01.09-210398 Th 2024 <br>
+                                    ⠀
+                                </p>
+                            </div>
+                        </div>
+                        <div class="list-block__item">
+                            <h3 class="h5" id="profile12">Company ID Number : </h3>
+                            <div class="list-block__text">
+                                <p>NIB : 0220303830053</p>
+                            </div>
+                        </div>
+                        <div class="list-block__item">
+                            <h3 class="h5" id="profile13">Tax Number : </h3>
+                            <div class="list-block__text">
+                                <p>NPWP : 02.145.159.6-048.000</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <section class="s-folio target-section">
+            <div style="margin-top: -10px;" class="row section-header light-on-dark" data-num="02">
+                <h3 class="column lg-12 section-header__pretitle text-pretitle">Technical Team (In House)</h3>
+                <div class="column lg-6 stack-on-1100 section-header__primary">
+                    <h2 class="title text-display-1 with-vertical-line-white">
+                        Technical Team
+                    </h2>
+                </div>
+                <div class="column lg-6 stack-on-1100 section-header__secondary">
+                    <p class="desc">
+                       <ul class="disc">
+                        <li style="color: lightgray;">1 Senior Mining Estimator & Competent Person (UGM)</li>
+                        <li style="color: lightgray;">2 Senior Geologists (UPN)</li>
+                        <li style="color: lightgray;">3 Experiences Summit Mining (Trisakti)</li>
+                        <li style="color: lightgray;">2 Site Managers (ITB, ITS)</li>
+                        <li style="color: lightgray;">3 Mining Supervisor(ITS)</li>
+                       </ul>
+                </div>
+            </div> 
+            </section>
+            <section class="s-services target-section">
+                <div style="margin-top: -10px;" class="row section-header" data-num="03">
+                    <h3 class="column lg-12 section-header__pretitle text-pretitle">Trading Arm - Shipper</h3>
+                    <div class="column lg-6 stack-on-1100 section-header__primary">
+                        <h2 class="title text-display-1 with-vertical-line">
+                            Shipper
+                        </h2>
+                    </div>
+                    <div class="column lg-6 stack-on-1100 section-header__secondary">
+                        <p class="desc">
+                           PT. Solusi Energi Mineral Abadi<br>
+                           COAL TRADING PERMIT :<br>
+                           2. Export License : ET. 03.ET-04-21.0253<br>
+                           1. IUP-OPK Transportation - Sales No. 496/I/IUP/PMDN/2021
+                        </p>
+                    </div>
+                </div>
+            </section>
+            <section class="s-folio target-section">
+                <div style="margin-top: -10px;" class="row section-header light-on-dark" data-num="04">
+                    <h3 class="column lg-12 section-header__pretitle text-pretitle">Shipping Company</h3>
+                    <div class="column lg-6 stack-on-1100 section-header__primary">
+                        <h2 class="title text-display-1 with-vertical-line-white">
+                            Shipping Company
+                        </h2>
+                    </div>
+                    <div class="column lg-6 stack-on-1100 section-header__secondary">
+                        <p class="desc">
+                            <ul class="disc">
+                                <li style="color: lightgray;">PT Pelayaran Mitra Bahari Sentosa, Banjarmasin (Tug &
+                                    Barge)</li>
+                                <li style="color: lightgray;">PT Menara Global Trans, Samarinda (Tug & Barge)</li>
+                                <li style="color: lightgray;">SWAN SEA LOGISTICS SDN BHD,MALAYSIA (SHIPPING COMPANY)</li>
+                            </ul>
+                    </div>
+                </div>
+            </section>
+        </section> <!-- end s-services -->
+
+
+        <!-- portfolio
+            ----------------------------------------------- -->
+        <section id="visionMission" class="s-folio target-section" style="display: none;">
+
+            <div class="row section-header light-on-dark" data-num="02">
+                <h3 class="column lg-12 section-header__pretitle text-pretitle">Visi dan Misi</h3>
+                <div class="column lg-6 stack-on-1100 section-header__primary">
+                    <h2 class="title text-display-1">
+                        Page under construction !
+                    </h2>
+                </div>
+                <div class="column lg-6 stack-on-1100 section-header__secondary">
+                    <p class="desc">
+                      <svg xmlns="http://www.w3.org/2000/svg" height="320" width="240" viewBox="0 0 512 512">
+                          <path fill="#FFD43B"
+                              d="M256 32c14.2 0 27.3 7.5 34.5 19.8l216 368c7.3 12.4 7.3 27.7 .2 40.1S486.3 480 472 480H40c-14.3 0-27.6-7.7-34.7-20.1s-7-27.8 .2-40.1l216-368C228.7 39.5 241.8 32 256 32zm0 128c-13.3 0-24 10.7-24 24V296c0 13.3 10.7 24 24 24s24-10.7 24-24V184c0-13.3-10.7-24-24-24zm32 224a32 32 0 1 0 -64 0 32 32 0 1 0 64 0z" />
+                          </svg>
+                    </p>
+                </div>
+            </div> <!-- end section-header -->
+        </section> <!-- end s-folio -->
+
+        <section id="management" class="s-services target-section" style="display: none; margin-bottom: -145px;">
+            <div class="row section-header" data-num="03">
+                <h3 class="column lg-12 section-header__pretitle text-pretitle">Dewan Manajemen</h3>
+                <div class="column lg-6 stack-on-1100 section-header__primary">
+                    <h2 class="title text-display-1 with-vertical-line">
+                        Dewan Komisaris
+                    </h2>
+                </div>
+            </div> <!-- end section-header -->
+            <div class="row" style="margin-top: -30px;">
+                <div class="profile-wrapper">
+                    <div class="profile-card">
+                        <img src="images/avatars/img_prf01.jpg" alt="Profile Photo">
+                        <h3 style="text-align: center;">Mayjend TNI (Purn) Dadang Hendrayudha</h3>
+                        <p>President Commisioner</p>
+                    </div>
+                    <div class="profile-card">
+                        <img src="images/avatars/img_prf02.jpg" alt="Profile Photo">
+                        <h3 style="text-align: center;">Drs. Andi Muhammad Thamrin</h3>
+                        <p>Commissioner</p>
+                    </div>
+                    <div class="profile-card">
+                        <img src="images/avatars/img_prf03.jpg" alt="Profile Photo">
+                        <h3 style="text-align: center;">H. Budiman</h3>
+                        <p>Commissioner</p>
+                    </div>
+                    <div class="profile-card">
+                        <img src="images/avatars/img_prf04.jpg" alt="Profile Photo">
+                        <h3 style="text-align: center;">Nikmatullah, SE</h3>
+                        <p>Commissioner</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row section-header">
+                <h3 class="column lg-12 section-header__pretitle text-pretitle"></h3>
+                <div class="column lg-6 stack-on-1100 section-header__primary">
+                    <h2 class="title text-display-1 with-vertical-line">
+                        Dewan Direksi
+                    </h2>
+                </div>
+            </div>
+             <div class="row" style="margin-top: -30px;">
+                 <div class="profile-wrapper-director">
+                     <div class="profile-card-dir">
+                         <img src="images/avatars/img_prf05.jpg" alt="Profile Photo">
+                         <h3 style="text-align: center;">Agus Sugianto, SH</h3>
+                         <p>President Director</p>
+                     </div>
+                     <div class="profile-card-dir">
+                         <img src="images/avatars/img_prf06.jpg" alt="Profile Photo">
+                         <h3 style="text-align: center;">Lukman Jafar, Dipl. Eng</h3>
+                         <p>Director</p>
+                     </div>
+                     <div class="profile-card-dir">
+                         <img src="images/avatars/img_prf07.jpg" alt="Profile Photo">
+                         <h3 style="text-align: center;">Hariyadi Sapta Yoga, SH</h3>
+                         <p>Director</p>
+                     </div>
+                     <div class="profile-card-dir">
+                           <img src="images/avatars/img_prf08.jpg" alt="Profile Photo">
+                           <h3 style="text-align: center;">Drs. Priyadi Sutadji</h3>
+                           <p>Director</p>
+                       </div>
+                     <div class="profile-card-dir">
+                         <img src="images/avatars/img_prf09.jpg" alt="Profile Photo">
+                         <h3 style="text-align: center;">Lee Sim Sian, Phd</h3>
+                         <p>Business Dev.Director</p>
+                     </div>
+                 </div>
+             </div>
+              <div class="row section-header">
+                <h3 class="column lg-12 section-header__pretitle text-pretitle"></h3>
+                <div class="column lg-6 stack-on-1100 section-header__primary">
+                    <h2 class="title text-display-1 with-vertical-line">
+                        Struktur Manajemen
+                    </h2>
+                </div>
+            </div>
+            <div class="management-image">
+                <img style="width: 50%;" src="images/board_m.jpg" alt="Struktur Manajemen">
+            </div>
+        </section> <!-- end s-services -->
+
+        <section id="partners" class="s-services target-section" style="display: none;">
+
+             <div class="row section-header" data-num="04">
+                 <h3 class="column lg-12 section-header__pretitle pretitle text-pretitle">Partners</h3>
+                 <div class="column lg-12">
+                     <h2 class="title text-display-1 with-vertical-line" style="margin-bottom: -25px;">
+                         <strong>Independence Surveyor</strong>
+                     </h2>
+                 </div>
+             </div>
+
+
+             <div class="row clients-list block-lg-one-fourth block-md-one-third block-tab-one-half block-stack"
+                 style="justify-content: center;">
+                 <div class="column clients-list__item">
+                     <a>
+                         <img src="images/clients/ccic.png" alt="">
+                     </a>
+                 </div>
+                 <div class="column clients-list__item">
+                     <a>
+                         <img src="images/clients/sgs.png" alt="">
+                     </a>
+                 </div>
+                 <div class="column clients-list__item">
+                     <a>
+                         <img src="images/clients/sucofindo.png" alt="">
+                     </a>
+                 </div>
+             </div>
+
+             <div class="row section-header">
+                 <div class="column lg-12">
+                     <h2 class="title text-display-1 with-vertical-line" style="margin-bottom: -25px; margin-top: -15px;">
+                         <strong>Banker</strong>
+                     </h2>
+                 </div>
+             </div>
+
+             <div class="row clients-list block-lg-one-fourth block-md-one-third block-tab-one-half block-stack">
+                 <div class="column clients-list__item">
+                     <a>
+                         <img src="images/clients/bni.png" alt="">
+                     </a>
+                 </div>
+                 <div class="column clients-list__item">
+                     <a>
+                         <img src="images/clients/bri.png" alt="">
+                     </a>
+                 </div>
+                 <div class="column clients-list__item">
+                     <a>
+                         <img src="images/clients/mandiri.png" alt="">
+                     </a>
+                 </div>
+                 <div class="column clients-list__item">
+                     <a>
+                         <img src="images/clients/bca.png" alt="">
+                     </a>
+                 </div>
+             </div>
+        </section>
+        <!-- # site-footer
+        ================================================== -->
+            <footer id="footer" class="s-footer target-section">
+                <div class="row section-header light-on-dark" data-num="04">
+                    <h3 class="column lg-12 section-header__pretitle text-pretitle" id="kontek">Contact</h3>
+                    <div class="column lg-6 stack-on-1100 section-header__primary">
+                        <h2 id="kontek1" class="title text-display-1" style=" color : var(--color-gray-2);">
+                            Any Questions? <br> Feel Free to Contact us at
+                        </h2>
+                        <h2 style="margin-top: -10px;"><a href="mailto:hello@ptkbn.co.id" target="_blank"
+                                title="">hello@ptkbn.co.id</a></h2>
+                    </div>
+                    <div class="column lg-6 stack-on-1100 section-header__secondary">
+                        <div class="contact-block">
+                            <h6 id="kontek3">Where To Find Us</h6>
+                            <ul class="contact-list">
+                                <li><a id="kontek4" href="https://maps.app.goo.gl/mGzxjzFiZPkFTCsd8" target="_blank">38
+                                        Tower A Kota Kasablanka, Jl. Casablanca Raya Kav.88 Jakarta,
+                                        12870</a></li>
+                            </ul>
+                        </div>
+                        <div class="contact-block">
+                            <h6 id="kontek5">Contact Infos</h6>
+                            <ul class="contact-list">
+                                <li><a id="kontek6" href="tel:+6281382225921" target="_blank">+62 813 8222 5921 (Penni
+                                        Octora)</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div> <!-- end section-header -->
+                <div class="row s-footer__bottom">
+                    <div class="column lg-6 tab-12 s-footer__bottom-right">
+                        <div class="ss-copyright">
+                            <span id="copyright"> ©
+                                <script>document.getElementById('copyright').appendChild(document.createTextNode(new Date().getFullYear()))</script>
+                                PT Kolindo Bina Nusantara.
+                                All Rights Reserved.
+                            </span>
+                        </div>
+                    </div>
+            
+                </div> <!-- s-footer__bottom -->
+            
+                <div class="ss-go-top">
+                    <a class="smoothscroll" title="Back to Top" href="#top">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                            style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;">
+                            <path d="M6 4h12v2H6zm5 10v6h2v-6h5l-6-6-6 6z"></path>
+                        </svg>
+                    </a>
+                </div> <!-- end ss-go-top -->
+            
+            </footer> <!-- end footer -->
+
+
+        <!-- Java Script
+    ================================================== -->
+        <script src="js/plugins.js"></script>
+        <script src="js/main.js"></script>
+        <script src="js/lang.js"></script>
+        <script>
+            const profileBtn = document.getElementById('profileBtn');
+            const visionMissionBtn = document.getElementById('visionMissionBtn');
+            const managementBtn = document.getElementById('managementBtn');
+            const partnersBtn = document.getElementById('partnersBtn');
+            const profileSection = document.getElementById('profile');
+            const visionMissionSection = document.getElementById('visionMission');
+            const managementSection = document.getElementById('management');
+            const partnersSection = document.getElementById('partners');
+
+            // Fungsi untuk menampilkan section berdasarkan tombol yang diklik
+            function showSection(section) {
+                const sections = [profileSection, visionMissionSection, managementSection, partnersSection];
+                sections.forEach((sec) => {
+                    if (sec.id === section.id) {
+                        sec.style.display = 'block';
+                    } else {
+                        sec.style.display = 'none';
+                    }
+                });
+            }
+
+            // Tambahkan event onClick pada tombol-tombol untuk memanggil fungsi yang sesuai
+            profileBtn.addEventListener('click', () => showSection(profileSection));
+            visionMissionBtn.addEventListener('click', () => showSection(visionMissionSection));
+            managementBtn.addEventListener('click', () => showSection(managementSection));
+            partnersBtn.addEventListener('click', () => showSection(partnersSection));
+        </script>
+        <script>
+            document.querySelectorAll('.btn').forEach(button => {
+            button.addEventListener('click', function() {
+            document.querySelectorAll('.btn').forEach(btn => btn.classList.remove('active'));
+            this.classList.add('active');
+            });
+            });
+        </scrip>
+</body>
+
+</html>
